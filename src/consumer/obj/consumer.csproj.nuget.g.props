@@ -12,4 +12,11 @@
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <SourceRoot Include="/Users/lucascastro/.nuget/packages/" />
   </ItemGroup>
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)microsoft.extensions.configuration.usersecrets/11.0.0-preview.7.26381.103/buildTransitive/net10.0/Microsoft.Extensions.Configuration.UserSecrets.props" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.configuration.usersecrets/11.0.0-preview.7.26381.103/buildTransitive/net10.0/Microsoft.Extensions.Configuration.UserSecrets.props')" />
+  </ImportGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgAWSSDK_Core Condition=" '$(PkgAWSSDK_Core)' == '' ">/Users/lucascastro/.nuget/packages/awssdk.core/4.0.101</PkgAWSSDK_Core>
+    <PkgAWSSDK_SQS Condition=" '$(PkgAWSSDK_SQS)' == '' ">/Users/lucascastro/.nuget/packages/awssdk.sqs/4.0.100.8</PkgAWSSDK_SQS>
+  </PropertyGroup>
 </Project>
