@@ -108,10 +108,10 @@ O worker inicia o long polling e passa a logar no console as mensagens recebidas
 
 ## Próximas tarefas
 
-- Adicionar Dead Letter Queue (DLQ) para mensagens com falha recorrente.
-- Publicar as imagens em containers (Docker) para facilitar o deploy.
-- Testes de integração com [LocalStack](https://www.localstack.cloud/) para simular o SQS localmente.
-- Mover a `UrlQueue` para *AWS Secrets Manager* / *Systems Manager Parameter Store*.
+- [ ] Adicionar Dead Letter Queue (DLQ) para mensagens com falha recorrente.
+- [ ] Publicar as imagens em containers (Docker) para facilitar o deploy.
+- [ ] Testes de integração com [LocalStack](https://www.localstack.cloud/) para simular o SQS localmente.
+- [ ] Mover a `UrlQueue` para *AWS Secrets Manager* / *Systems Manager Parameter Store*.
 
 ## Autor
 
