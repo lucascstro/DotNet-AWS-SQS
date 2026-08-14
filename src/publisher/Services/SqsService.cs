@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Amazon.SQS;
 
 namespace publisher.Services
@@ -11,10 +7,10 @@ namespace publisher.Services
         private readonly IAmazonSQS _sqsClient;
         private readonly string _queueUrl;
 
-        public SqsService(IAmazonSQS sqsClient, string queueUrl)
+        public SqsService(IConfiguration config, IAmazonSQS sqsClient)
         {
             _sqsClient = sqsClient;
-            _queueUrl = queueUrl;
+            _queueUrl = config["AWS:UrlQueue"];
         }
 
         public async Task SendMessageAsync(string msg)
@@ -24,7 +20,9 @@ namespace publisher.Services
                 var request = new Amazon.SQS.Model.SendMessageRequest
                 {
                     QueueUrl = _queueUrl,
-                    MessageBody = msg
+                    MessageBody = msg,
+                    MessageGroupId = "TesteGroupId",
+                    MessageDeduplicationId = Guid.NewGuid().ToString()
                 };
                 
                 await _sqsClient.SendMessageAsync(request);

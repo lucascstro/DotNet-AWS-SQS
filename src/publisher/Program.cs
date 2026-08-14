@@ -1,3 +1,5 @@
+using Amazon.SQS;
+using publisher.Services;
 using Scalar.AspNetCore;
 
 namespace publishApi;
@@ -9,6 +11,10 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
         builder.Services.AddControllers();
         builder.Services.AddOpenApi();
+        
+        builder.Services.AddDefaultAWSOptions(builder.Configuration.GetAWSOptions());
+        builder.Services.AddAWSService<IAmazonSQS>();
+        builder.Services.AddScoped<SqsService>();
 
         var app = builder.Build();
 

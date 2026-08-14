@@ -7,7 +7,7 @@ namespace publisher.Controllers
     [Route("api/[controller]")]
     public class PublishController : ControllerBase
     {
-        private readonly Services.SqsService _sqsService;
+        private readonly SqsService _sqsService;
         private readonly ILogger<PublishController> _logger;
 
         public PublishController(SqsService sqsService, ILogger<PublishController> logger)
@@ -28,7 +28,7 @@ namespace publisher.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error publishing message to SQS");
-                return StatusCode(500, "Internal server error");
+                return StatusCode(500, "Error publishing message to SQS");
             }
         }
     }
